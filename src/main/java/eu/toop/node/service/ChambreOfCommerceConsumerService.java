@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import eu.toop.node.consumer.ConsumerService;
 import eu.toop.node.model.DataSet;
 
 @Service

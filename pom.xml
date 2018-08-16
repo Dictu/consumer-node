@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>eu.toop.node</groupId>
-	<artifactId>toopnode</artifactId>
+	<artifactId>consumer-node</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>toopnode</name>
+	<name>consumer-node</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -92,7 +92,6 @@
 		<dependency>
 	        <groupId>org.apache.httpcomponents</groupId>
 	        <artifactId>httpclient</artifactId>
-	        <version>4.5.3</version>
 		</dependency>
 		
 		<dependency>

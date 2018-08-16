@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import eu.toop.node.consumer.ConsumerService;
 import eu.toop.node.model.DataSet;
-import eu.toop.node.service.ConsumerService;
 
 @RestController
 public class ToopConsumer {
@@ -18,4 +18,5 @@ public class ToopConsumer {
     public DataSet provide(@RequestParam(value="country") String country, @RequestParam(value="id") String id) {
         return consumerService.provide(country, id);
     }
+	
 }
