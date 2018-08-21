@@ -23,12 +23,13 @@ public class ChambreOfCommerceConsumerService implements ConsumerService {
 	private Map<String, String> providerServices;
 	
 	@Override
-	public DataSet provide(String country, String id) {
-		LOGGER.info("Getting dataset from {} ProviderService for id {}.", country, id);
+	public DataSet provide(String country, String companyCode) {
+		LOGGER.info("Getting dataset from ProviderService with URL {} for companyCode {}.", country, companyCode);
 		String url = providerServices.get(country);
 		try {
-			return service.getDataSet(url, id);
+			return service.getDataSet(url, companyCode);
 		} catch (IOException e) {
+			LOGGER.error("Unable to get dataset from ProviderService with URL {} for companyCode {}.", country, companyCode, e);
 			return null;
 		}
 	}

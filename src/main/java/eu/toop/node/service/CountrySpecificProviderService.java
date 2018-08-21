@@ -19,20 +19,25 @@ public class CountrySpecificProviderService extends RestClient {
 		super();
 	}
 	
-	public ChamberOfCommerceDataSet getDataSet(String url, String kvk) throws IOException {
+	public ChamberOfCommerceDataSet getDataSet(String url, String companyCode) throws IOException {
 		ChamberOfCommerceDataSet set = new ChamberOfCommerceDataSet();
-		set.setCompanyCode(kvk);
-		String json = super.get(url + kvk);
+		String json = super.get(url + companyCode);
 		JsonNode root = new ObjectMapper().readTree(json.getBytes(StandardCharsets.UTF_8));
 		set.setCompanyName(root.get("companyName").asText());
-		
+		set.setCompanyCode(companyCode);
+		set.setCompanyType(root.get("companyType").asText());
+		set.setLegalStatus(root.get("legalStatus").asText());
+		set.setLegalStatusEffectiveDate(root.get("legalStatusEffectiveDate").asText());
+		set.setRegistrationAuthority(root.get("registrationAuthority").asText());
+		set.setRegistrationDate(root.get("registrationDate").asText());
+		set.setRegistrationNumber(root.get("registrationNumber").asText());
+		set.setActivityDeclaration(root.get("activityDeclaration").asText());
 		Address address = new Address();
 		address.setStreetName(root.get("headOfficeAddres").get("streetName").asText());
 		address.setPostalCode(root.get("headOfficeAddres").get("postalCode").asText());
 		address.setCity(root.get("headOfficeAddres").get("city").asText());
 		address.setCountry(root.get("headOfficeAddres").get("country").asText());
 		set.setHeadOfficeAddres(address);
-		
 		return set;
 	}
 }
