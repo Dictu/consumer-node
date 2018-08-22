@@ -23,8 +23,8 @@ public class CountrySpecificProviderService extends RestClient {
 		ChamberOfCommerceDataSet set = new ChamberOfCommerceDataSet();
 		String json = super.get(url + companyCode);
 		JsonNode root = new ObjectMapper().readTree(json.getBytes(StandardCharsets.UTF_8));
+		set.setCompanyCode(root.get("companyCode").asText());
 		set.setCompanyName(root.get("companyName").asText());
-		set.setCompanyCode(companyCode);
 		set.setCompanyType(root.get("companyType").asText());
 		set.setLegalStatus(root.get("legalStatus").asText());
 		set.setLegalStatusEffectiveDate(root.get("legalStatusEffectiveDate").asText());
